@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="style.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <title>COVID-19 Tracker</title>
+</head>
+<body>
+  <div class="main-container">
+    <div class="header-container">
+      <div class="title">COVID-19 Tracker</div>
+      <div class="data">
+        <div class="box" id="total">Total</div>
+        <div class="box" id="recovered">Recovered</div>
+        <div class="box" id="death">Death</div>
+     </div>
+      <select id="select"></select>
+    </div>
+    <div id="country-results">
+
+      <div id="results">
+        <div class="loader hidden">
+          <i class="fas fa-spinner fa-spin fa-3x"></i>
+        </div>
+
+        <h1 id="country-name"></h1>
+        <br>
+        <div id="country-details">
+        <div  id="total-country"></div>
+        <div  id="recovered-country"></div>
+        <div  id="death-country"></div>
+        </div>
+
+        <canvas id="myChart"></canvas>
+      </div>
+    </div>
+
+   
+
+  </div>
+
+
+
+
+  <script src="javascript.js"></script>
+</body>
+</html>
