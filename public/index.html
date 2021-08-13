@@ -7,18 +7,21 @@
   <link href="style.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
   <title>COVID-19 Tracker</title>
 </head>
 <body>
   <div class="main-container">
     <div class="header-container">
-      <div class="title">COVID-19 Tracker</div>
+      <img class="logo" src="download.png">
+      <!-- <div class="title">COVID-19 Tracker</div> -->
       <div class="data">
-        <div class="box" id="total">Total</div>
-        <div class="box" id="recovered">Recovered</div>
-        <div class="box" id="death">Death</div>
+        <div class="box" id="total-new-confirmed">New Confirmed</div>
+        <div class="box" id="total-confirmed">Total Confirmed</div>
+        <div class="box" id="total-deaths">Total Deaths</div>
      </div>
       <select id="select"></select>
+      <a class="contact" href="contact.html" target="_blank">CONTACT</a>
     </div>
     <div id="country-results">
 
@@ -31,7 +34,7 @@
         <br>
         <div id="country-details">
         <div  id="total-country"></div>
-        <div  id="recovered-country"></div>
+
         <div  id="death-country"></div>
         </div>
 

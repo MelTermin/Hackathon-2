@@ -5,56 +5,61 @@ console.log(select)
 
 const details = async () => {
 
-  let url=`https://covid19.mathdro.id/api`
+  let url=`https://api.covid19api.com/summary`
 
   fetch(url)
  .then((response) => response.json())
  .then((data) =>  {
-  const total=document.getElementById("total");
-  const recovered=document.getElementById("recovered");
-  const death=document.getElementById("death");
+  const totalNew=document.getElementById("total-new-confirmed");
+  const totalConfirmed=document.getElementById("total-confirmed");
+  const totalDeaths=document.getElementById("total-deaths");
   
-  const title=document.createElement("p")
-  title.innerHTML=data["confirmed"]["value"]
+  const titleNew=document.createElement("p")
+  titleNew.innerHTML=data["Global"]["NewConfirmed"]
+ titleNew.classList.add("number")
+
+  const date=document.createElement("p")
+  date.innerHTML="Last updated:" + " " +  new Date(data["Global"]["Date"]).toLocaleDateString("en-US")
   
-  const titleRecovered=document.createElement("p")
-  titleRecovered.innerHTML=data["recovered"]["value"]
+  const titleConfirmed=document.createElement("p")
+  titleConfirmed.innerHTML=data["Global"]["TotalConfirmed"]
+  titleConfirmed.classList.add("number")
   
-  const titleDeath=document.createElement("p")
-  titleDeath.innerHTML=data["deaths"]["value"]
+  const date1=document.createElement("p")
+  date1.innerHTML="Last updated:" + " " + new Date(data["Global"]["Date"]).toLocaleDateString("en-US")
 
-  fetch(`${data.countries}`)
+  const titleDeaths=document.createElement("p")
+  titleDeaths.innerHTML=data["Global"]["TotalDeaths"]
+  titleDeaths.classList.add("number")
+  const date2=document.createElement("p")
+  date2.innerHTML="Last updated:" + " " + new Date(data["Global"]["Date"]).toLocaleDateString("en-US")
 
-  .then(resp => resp.json())
-       .then(country => {
-         console.log(country)
+  
+  let countries=data["Countries"]
 
-         let names= country.countries
-        //  console.log(names[0])
-
-
-
-         for (let i=0; i<names.length; i++) {
+        for (let i=0; i<countries.length; i++) {
            const option=document.createElement("option");
-           option.value=names[i]["name"]
-           option.innerText=names[i]["name"]
+           option.value=countries[i]["Country"]
+           option.innerText=countries[i]["Country"]
            select.append(option)
-        
-          //  console.log(names[i]["name"])
          }
-     
-        
-       })
-  
-  total.append(title)
-  recovered.append(titleRecovered)
-  death.append(titleDeath)
+
+  totalNew.append(titleNew,date)
+  totalConfirmed.append( titleConfirmed,date1)
+  totalDeaths.append(titleDeaths, date2)
 
  })
 
 }
 details()
 
+const loader= document.querySelector(".loader")
+console.log(loader)
+const countryName=document.getElementById("country-name")
+const countryDetails=document.getElementById("country-details");
+const totalCountry=document.getElementById("total-country");
+const totalDeath=document.getElementById("death-country");
+const totalRecovered=document.getElementById("recovered-country");
 
 function getCountryDetails() {
 
@@ -62,9 +67,11 @@ function getCountryDetails() {
 
 select.addEventListener("change", function (event){
   //console.log(event.target.value)//in here event.target is equal to select//
-  loader.classList.remove("hidden");
+loader.classList.remove("hidden");
 
   let specificCountryName=event.target.value;
+  console.log(specificCountryName)
+  
 // console.log(specificCountryName)
   let countryUrl=`https://covid19.mathdro.id/api/countries/${specificCountryName}`
 
@@ -75,13 +82,7 @@ select.addEventListener("change", function (event){
 
 })
 
-const loader= document.querySelector(".loader")
-console.log(loader)
-const countryName=document.getElementById("country-name")
-const countryDetails=document.getElementById("country-details");
-const totalCountry=document.getElementById("total-country");
-const totalDeath=document.getElementById("death-country");
-const totalRecovered=document.getElementById("recovered-country");
+
 
 function getCountryDetails(countryUrl, specificCountryName) {
 
@@ -96,11 +97,6 @@ function getCountryDetails(countryUrl, specificCountryName) {
     totalCountry.classList.add("country-box")
     totalCountry.innerHTML="Total"
     
-    
-    totalRecovered.classList.add("country-box")
-    totalRecovered.innerHTML="Recovered"
-
-        
     totalDeath.classList.add("country-box")
     totalDeath.innerHTML="Deaths"
     
@@ -118,13 +114,14 @@ function getCountryDetails(countryUrl, specificCountryName) {
 
     //appending
     totalCountry.append(title)
-    totalRecovered.append(titleRecovered)
+
     totalDeath.appendChild(titleDeath)
 
     loader.classList.add("hidden");
     displayChart(countryUrl,specificCountryName)
   
   })
+  
 }
 
 getCountryDetails()
@@ -173,4 +170,4 @@ function displayChart(countryUrl,specificCountryName) {
 
 
 
-// 
+

@@ -1,0 +1,137 @@
+*{
+  margin:0;
+  padding:0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;;
+}
+  
+.main-container {
+  height: 100vh;
+
+}
+
+.header-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: #00192a;
+  height: 200px;
+}
+
+.logo {
+  border-radius: 5px;
+}
+
+.data {
+  display: flex; 
+  flex-direction: row; 
+  justify-content: space-between;
+}
+
+.box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 50px 10px;
+  height: 180px;
+  width:180px;
+  background-color: white;
+  margin-left: 10px;
+  text-align: center;
+  padding: 35px;
+  border-radius: 5px;
+ 
+}
+
+#total-new-confirmed {
+  border-bottom: 10px solid rgba(0, 0, 255, 0.5);
+  font-size: 14px;
+
+}
+
+#total-confirmed {
+  border-bottom: 10px solid rgba(0, 255, 0, 0.5);
+  font-size: 14px;
+  
+ 
+}
+
+#total-deaths{
+  border-bottom: 10px solid rgba(255, 0, 0, 0.5);
+  font-size: 14px;
+
+}
+
+.number {
+  margin:10px;
+color:#da4040;
+font-size: 20px;
+}
+/* for spinner*/
+.loader {
+  text-align: center;
+  margin: 100px;
+  color:black;
+}
+
+.hidden {
+  display: none;
+}
+
+
+#country-name {
+  text-align: center;
+  margin-top:40px;
+  text-transform: uppercase;
+  font-size: 50px;
+  color: #76323b;
+}
+
+.country-box {
+  height: 150px;
+  width:150px;
+  background-color: #2f3645;
+  color: whitesmoke;
+  text-align: center;
+  padding: 35px;
+  margin:30px 50px;
+  border-radius: 5px;
+}
+
+#country-details {
+  display: flex; 
+  flex-direction: row; 
+  justify-content: center;
+
+}
+
+#myChart {
+  transform:scale(0.7,0.7)
+}
+
+select {
+  width:300px;
+  height: 30px;
+  border-radius: 5px;
+  /* border: 3px solid #8e3c46; */
+ 
+
+}
+/* contact kısmını düşün */
+.contact {
+  color:white;
+  background-color: #0088a9;
+  border-radius: 50px;
+  width: 100px;
+  padding: 10px;
+  text-align: center;
+
+}
+
+a{
+  text-decoration: none;
+}
